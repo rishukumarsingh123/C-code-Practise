@@ -69,7 +69,7 @@ int main()
     }
     printf("linked list is\n");
     traverse(head);
-    printf("\nafter deleting node at first\n");
+    printf("\nafter deleting node at end\n");
     head=delete_at_end(head);
     traverse(head);
     return 0;
