@@ -1,0 +1,54 @@
+#include<stdio.h>
+#define size 100
+int top=-1;
+int stack[size];
+void push(int value)
+{
+    if(top==size-1)
+    {
+        printf("stack is overflow\n");
+    }
+    else{
+        top++;
+        stack[top]=value;
+    }
+}
+int pop()
+{
+    if(top==-1)
+    {
+        printf("stack is empty\n");
+    }
+    else{
+        printf("poped element is %d\n",stack[top--]);
+    }
+}
+void display()
+{   
+    for(int i=top;i>=0;i--)
+    {
+        printf("|%d|\n",stack[i]);
+    }
+}
+int main(){
+    int s,value,p;
+    printf("enter size of a stack ");
+    scanf("%d",&s);
+    printf("enter elements of a stack ");
+    for(int i=0;i<s;i++)
+    {
+        scanf("%d",&value);
+        push(value);
+    }
+    printf("stack is\n");
+    display();
+    printf("how many elements will be poped ");
+    scanf("%d",&p);
+    for(int i=0;i<p;i++)
+    {
+        pop();
+    }
+    printf("\nstack after deleting elements is\n");
+    display();
+    return 0;
+}
