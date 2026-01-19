@@ -1,0 +1,63 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct stack
+{
+    int size;
+    int top;
+    int *arr;
+};
+void push(struct stack *ptr,int value)
+{
+    if(ptr->top==ptr->size-1)
+    {
+        printf("stack is overflow\n");
+    }
+    else{
+        ptr->top++;
+        ptr->arr[ptr->top]=value;
+    }
+}
+void pop(struct stack *ptr)
+{
+    if(ptr->top==-1)
+    {
+        printf("struct is underflow\n");
+    }
+    else{
+        printf("poped elements is %d\n",ptr->arr[ptr->top--]);
+    }
+}
+void display(struct stack *ptr)
+{
+    for(int i=ptr->top;i>=0;i--)
+    {
+        printf("|%d|\n",ptr->arr[i]);
+    }
+}
+int main()
+{
+    struct stack *sp=(struct stack*)malloc(sizeof(struct stack));
+    sp->size=100;
+    sp->top=-1;
+    sp->arr=(int*)malloc(sp->size*sizeof(int));
+    int s,value,p;
+    printf("enter stack size ");
+    scanf("%d",&s);
+    printf("enter stack elements ");
+    for(int i=0;i<s;i++)
+    {
+        scanf("%d",&value);
+        push(sp,value);
+    }
+    printf("stack is\n");
+    display(sp);
+    printf("enter how many elements are you want to delete ");
+    scanf("%d",&p);
+    for(int i=0;i<p;i++)
+    {
+        pop(sp);
+    }
+    printf("Stack after deleting elements is\n");
+    display(sp);
+    return 0;
+}
