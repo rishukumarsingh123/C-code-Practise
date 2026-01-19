@@ -1,0 +1,76 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *next;
+};
+// Inserting node at last
+struct node* at_end(struct node *ptr,int data)
+{
+    struct node *temp=(struct node*)malloc(sizeof(struct node));
+    temp->data=data;
+    temp->next=NULL;
+    if(ptr == NULL)
+    {
+        return temp;
+    }
+    else{
+        struct node *p=ptr;
+        while(p->next != NULL)
+        {
+            p=p->next;
+        }
+        p->next=temp;
+        return ptr;
+    }
+}
+// Displaying linked list elements
+void traverse(struct node *ptr)
+{
+    if(ptr== NULL)
+    {
+        printf("linkedlist is empty\n");
+    }
+    else{
+        printf("element is ");
+        while(ptr != NULL)
+        {
+            printf("%d ",ptr->data);
+            ptr=ptr->next;
+        }
+    }
+}
+// Deleting node at last
+struct node* delete_at_end(struct node *ptr)
+{
+    struct node *p=ptr;
+    struct node *q=ptr->next;
+    while(q->next != NULL)
+    {
+        q=q->next;
+        p=p->next;
+    }
+    p->next=NULL;
+    free(q);
+    return ptr;
+}
+int main()
+{
+    struct node *head=NULL;
+    int size,data;
+    printf("enter size of linked list ");
+    scanf("%d",&size);
+    printf("enter elements of linked list ");
+    for(int i=0;i<size;i++)
+    {
+        scanf("%d",&data);
+        head=at_end(head,data);
+    }
+    printf("linked list is\n");
+    traverse(head);
+    printf("\nafter deleting node at end\n");
+    head=delete_at_end(head);
+    traverse(head);
+    return 0;
+}

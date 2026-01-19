@@ -1,0 +1,195 @@
+#include<iostream>
+#include <cmath>
+using namespace std;
+void arithmetic_operator()
+{
+
+    // Arithmetic calculation
+    cout<<"\nArithmetic calculation\n";
+    double num1,num2,sum,diff,mul,div;
+    char c,x,equal;
+    do{
+        cout<<"Enter first number ";
+        cin>>num1;
+        cout<<"Enter operators(+,-,*,/) ";
+        cin>>c;
+        cout<<"Enter second number ";
+        cin>>num2;
+        switch (c)
+        {
+        case '+':
+            sum=num1+num2;
+            cout<<"Sum of "<<num1<<" and "<<num2<<" is "<<sum;
+            break;
+        case '-':
+            diff=num1-num2;
+            cout<<"Difference of "<<num1<<" and "<<num2<<" is "<<diff;
+            break;
+        case '*':
+            mul=num1*num2;
+            cout<<"Multiplication of "<<num1<<" and "<<num2<<" is "<<mul;
+            break;
+        case '/':
+        if(num2==0)
+        {
+            cout<<"Invalid division ";
+            break;
+        }
+        else{
+            div=num1/num2;
+            cout<<"Division of "<<num1<<" and "<<num2<<" is "<<div;
+            break;
+        }
+
+        default:
+            cout<<"enter valid operator";
+            break;
+
+    }
+        cout << "\nDo you want to continue Arithmetic? (y/n): ";
+        cin >> x;
+    }
+    while(x=='y' || x=='Y');
+
+    cout << "\nArithmetic Calculator closed.\n";
+
+}
+void factorial()
+{
+    // factorial calculation
+    cout<<"\nFactorial calculation\n";
+    int num;
+    char x;
+    do
+    {
+        int f=1;
+    cout<<"enter a number ";
+    cin>>num;
+    if(num==0 || num==1)
+    {
+        cout<<"Factorial of "<<num<<" is "<<"1";
+    }
+    else{
+        for(int i=1;i<=num;i++)
+        {
+            f=f*i;
+        }
+        cout<<"Factorial of "<<num<<" is "<<f;
+    }
+        cout << "\nDo you want to continue Factorial? (y/n): ";
+        cin >> x;
+    } while (x=='y' || x=='Y');
+    cout << "\nFactorial Calculator closed.\n";
+}
+void logarithmic()
+{
+    // logarithmic calculation
+    cout<<"\nLogarithmic calculation \n";
+    int a;
+    double num;
+    char x;
+    do{
+        cout<<"For Natural logarithm (ln),enter 1\n";
+        cout<<"For Logarithm base 10 (log10),enter 2\n";
+        cin>>a;
+
+        cout << "Enter a number: ";
+        cin >> num;
+
+        if (num <= 0)
+        {
+            cout << "Log undefined for non-positive numbers";
+        }
+        else if (a == 1)
+        {
+            cout << "ln(" << num << ") = " << log(num);
+        }
+        else if (a == 2)
+        {
+            cout << "log10(" << num << ") = " << log10(num);
+        }
+        else
+        {
+            cout << "Invalid choice";
+        }
+        cout << "\nDo you want to continue Logarithmic? (y/n): ";
+        cin >> x;
+    }while(x=='y' || x=='Y');
+    cout << "Logarithmic Calculator closed.\n";
+}
+void trigonometric()
+{
+    int choice;
+    double degree, radian;
+    char x;
+
+    do
+    {
+        cout << "\n--- Trigonometric Functions ---\n";
+        cout << "1. sin\n";
+        cout << "2. cos\n";
+        cout << "3. tan\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        cout << "Enter angle in degrees: ";
+        cin >> degree;
+
+        radian = degree * M_PI / 180;
+
+        switch (choice)
+        {
+            case 1:
+                cout << "sin(" << degree << ") = " << sin(radian);
+                break;
+            case 2:
+                cout << "cos(" << degree << ") = " << cos(radian);
+                break;
+            case 3:
+                cout << "tan(" << degree << ") = " << tan(radian);
+                break;
+            default:
+                cout << "Invalid choice";
+        }
+
+        cout << "\nDo you want to continue Trigonometry? (y/n): ";
+        cin >> x;
+
+    } while (x == 'y' || x == 'Y');
+
+    cout << "\nTrigonometric Calculator closed.\n";
+}
+
+int main()
+{
+    cout<<"\t Hello Guys! -> Welcome to Rishu Calculator <- \n"<<endl;
+    char x;
+    do
+    {
+    int a;
+    cout<<"For Arithmetic calculation,enter 1 \n";
+    cout<<"For Factorial calculation ,enter 2 \n";
+    cout<<"For Logarithmic calculation ,enter 3 \n";
+    cout<<"For Trigonometric calculation ,enter 4 \n";
+    cout<<"enter ";
+    cin>>a;
+    if (a == 1)
+        arithmetic_operator();
+    else if (a == 2)
+        factorial();
+    else if (a == 3)
+        logarithmic();
+    else if(a==4)
+    {
+        trigonometric();
+    }
+    else
+        cout << "Invalid option!";
+
+    cout << "Do you want to continue Calculator ? (y/n): \n";
+        cin >> x;
+
+    } while (x=='y' || x=='Y');
+    cout << "\nCalculator closed.";
+    return 0;
+}
